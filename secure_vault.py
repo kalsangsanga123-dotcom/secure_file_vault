@@ -13,3 +13,11 @@ VAULT_DIR = ".secure_vault"
 METADATA_FILE = os.path.join(VAULT_DIR, "vault.dat")  # Encrypted metadata
 VERIFY_FILE = os.path.join(VAULT_DIR, ".verify")      # Password verification
 os.makedirs(VAULT_DIR, exist_ok=True)
+def derive_key(password: str, salt: bytes) -> bytes:
+    """Convert password to encryption key using PBKDF2"""
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=100000
+    )
