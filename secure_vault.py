@@ -21,3 +21,4 @@ def derive_key(password: str, salt: bytes) -> bytes:
         salt=salt,
         iterations=100000
     )
+    return base64.urlsafe_b64encode(kdf.derive(password.encode()))
