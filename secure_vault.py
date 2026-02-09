@@ -23,3 +23,5 @@ def derive_key(password: str, salt: bytes) -> bytes:
     )
     return base64.urlsafe_b64encode(kdf.derive(password.encode()))
 def verify_password(password: str) -> bool:
+    """Check password without decrypting files (critical UX/security feature)"""
+    if not os.path.exists(VERIFY_FILE):
