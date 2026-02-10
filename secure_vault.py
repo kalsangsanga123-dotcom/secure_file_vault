@@ -34,3 +34,4 @@ def verify_password(password: str) -> bool:
         # Verify existing password
     with open(VERIFY_FILE, 'rb') as f:
         salt = f.read(16)
+        token = f.read()
