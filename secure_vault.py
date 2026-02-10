@@ -28,3 +28,4 @@ def verify_password(password: str) -> bool:
           # First-time setup: create verification token
         salt = os.urandom(16)
         token = Fernet(derive_key(password, salt)).encrypt(b"OK")
+        with open(VERIFY_FILE, 'wb') as f:
