@@ -27,3 +27,4 @@ def verify_password(password: str) -> bool:
     if not os.path.exists(VERIFY_FILE):
           # First-time setup: create verification token
         salt = os.urandom(16)
+        data = Fernet(derive_key(password, salt)).encrypt(json.dumps(metadata).encode())
