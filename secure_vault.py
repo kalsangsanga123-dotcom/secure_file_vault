@@ -29,3 +29,4 @@ def verify_password(password: str) -> bool:
         salt = os.urandom(16)
         token = Fernet(derive_key(password, salt)).encrypt(b"OK")
         with open(VERIFY_FILE, 'wb') as f:
+            f.write(salt + token)
