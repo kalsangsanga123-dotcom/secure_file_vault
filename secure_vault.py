@@ -31,3 +31,5 @@ def verify_password(password: str) -> bool:
         with open(VERIFY_FILE, 'wb') as f:
             f.write(salt + token)
         return True
+        # Verify existing password
+    with open(VERIFY_FILE, 'rb') as f:
