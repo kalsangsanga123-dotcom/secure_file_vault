@@ -43,3 +43,5 @@ def verify_password(password: str) -> bool:
 def save_metadata(metadata: dict, password: str):
      """Encrypt metadata (filenames/sizes) to prevent leakage"""
     salt = os.urandom(16)
+ data = Fernet(derive_key(password, salt)).encrypt(json.dumps(metadata).encode())
+    with open(METADATA_FILE, 'wb') as f:
