@@ -40,3 +40,5 @@ def verify_password(password: str) -> bool:
         return True
      except InvalidToken:
         return False
+def save_metadata(metadata: dict, password: str):
+    
