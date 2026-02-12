@@ -41,4 +41,5 @@ def verify_password(password: str) -> bool:
      except InvalidToken:
         return False
 def save_metadata(metadata: dict, password: str):
-    
+     """Encrypt metadata (filenames/sizes) to prevent leakage"""
+    salt = os.urandom(16)
