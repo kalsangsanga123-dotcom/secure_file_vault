@@ -38,3 +38,5 @@ def verify_password(password: str) -> bool:
     try:
         Fernet(derive_key(password, salt)).decrypt(token)
         return True
+     except InvalidToken:
+        return False
