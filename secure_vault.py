@@ -35,3 +35,6 @@ def verify_password(password: str) -> bool:
     with open(VERIFY_FILE, 'rb') as f:
         salt = f.read(16)
         token = f.read()
+    try:
+        Fernet(derive_key(password, salt)).decrypt(token)
+        return True
