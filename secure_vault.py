@@ -51,4 +51,6 @@ def load_metadata(password: str) -> dict:
      if not os.path.exists(METADATA_FILE):
         return {}
      with open(METADATA_FILE, 'rb') as f:
+      salt = f.read(16)
+     data = f.read()
           
