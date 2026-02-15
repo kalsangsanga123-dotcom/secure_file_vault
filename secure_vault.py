@@ -66,4 +66,5 @@ def encrypt_file(filepath: str, password: str):
 
     # Encrypt with unique salt per file
     salt = os.urandom(16)
+    encrypted = Fernet(derive_key(password, salt)).encrypt(data)
           
