@@ -47,10 +47,20 @@ def save_metadata(metadata: dict, password: str):
      with open(METADATA_FILE, 'wb') as f:
         f.write(salt + data)  # Store salt + encrypted data
 def load_metadata(password: str) -> dict:
-     """Decrypt metadata using password"""
-     if not os.path.exists(METADATA_FILE):
+    """Decrypt metadata using password"""
+    if not os.path.exists(METADATA_FILE):
         return {}
-     with open(METADATA_FILE, 'rb') as f:
-      salt = f.read(16)
-     data = f.read()
+    with open(METADATA_FILE, 'rb') as f:
+        salt = f.read(16)
+        data = f.read()
+    try:
+        return json.loads(Fernet(derive_key(password, salt)).decrypt(data))
+    except InvalidToken:
+        raise ValueError("Wrong password!")
+
+# ===== FILE OPERATIONS =====
+def encrypt_file(filepath: str, password: str):
+    """Encrypt file and store in vault"""
+    with open(filepath, 'rb') as f:
+        data = f.read()
           
