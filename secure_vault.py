@@ -69,4 +69,4 @@ def encrypt_file(filepath: str, password: str):
     encrypted = Fernet(derive_key(password, salt)).encrypt(data)
        # Save as unique filename (prevent duplicates)
     filename = os.path.basename(filepath)
-          
+    vault_path = os.path.join(VAULT_DIR, f"{filename}.enc")
