@@ -63,4 +63,7 @@ def encrypt_file(filepath: str, password: str):
     """Encrypt file and store in vault"""
     with open(filepath, 'rb') as f:
         data = f.read()
+
+    # Encrypt with unique salt per file
+    salt = os.urandom(16)
           
