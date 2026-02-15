@@ -47,3 +47,5 @@ def save_metadata(metadata: dict, password: str):
      with open(METADATA_FILE, 'wb') as f:
         f.write(salt + data)  # Store salt + encrypted data
 def load_metadata(password: str) -> dict:
+     """Decrypt metadata using password"""
+    if not os.path.exists(METADATA_FILE):
