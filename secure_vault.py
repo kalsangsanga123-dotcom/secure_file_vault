@@ -46,3 +46,4 @@ def save_metadata(metadata: dict, password: str):
      data = Fernet(derive_key(password, salt)).encrypt(json.dumps(metadata).encode())
      with open(METADATA_FILE, 'wb') as f:
         f.write(salt + data)  # Store salt + encrypted data
+def load_metadata(password: str) -> dict:
