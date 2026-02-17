@@ -70,3 +70,5 @@ def encrypt_file(filepath: str, password: str):
        # Save as unique filename (prevent duplicates)
     filename = os.path.basename(filepath)
     vault_path = os.path.join(VAULT_DIR, f"{filename}.enc")
+    counter = 1
+    while os.path.exists(vault_path):  # Handle duplicates simply
