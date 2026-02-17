@@ -72,3 +72,4 @@ def encrypt_file(filepath: str, password: str):
     vault_path = os.path.join(VAULT_DIR, f"{filename}.enc")
     counter = 1
     while os.path.exists(vault_path):  # Handle duplicates simply
+        vault_path = os.path.join(VAULT_DIR, f"{filename}.{counter}.enc")
