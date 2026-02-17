@@ -73,3 +73,7 @@ def encrypt_file(filepath: str, password: str):
     counter = 1
     while os.path.exists(vault_path):  # Handle duplicates simply
         vault_path = os.path.join(VAULT_DIR, f"{filename}.{counter}.enc")
+        counter += 1
+    
+    with open(vault_path, 'wb') as f:
+          f.write(salt + encrypted)  # Salt + ciphertext
