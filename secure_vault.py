@@ -77,3 +77,5 @@ def encrypt_file(filepath: str, password: str):
     
     with open(vault_path, 'wb') as f:
           f.write(salt + encrypted)  # Salt + ciphertext
+          # Update encrypted metadata
+    meta = load_metadata(password)
