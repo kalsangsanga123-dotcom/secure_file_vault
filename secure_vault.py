@@ -79,3 +79,15 @@ def encrypt_file(filepath: str, password: str):
           f.write(salt + encrypted)  # Salt + ciphertext
           # Update encrypted metadata
     meta = load_metadata(password)
+    meta[filename] = {"vault_path": os.path.basename(vault_path), "size": len(data)}
+    save_metadata(meta, password)
+def decrypt_file(filename: str, password: str, output_path: str):
+    """Decrypt file from vault to output location"""
+    meta = load_metadata(password)
+    if filename not in meta:
+        raise FileNotFoundError("File not in vault")
+    
+    vault_path = os.path.join(VAULT_DIR, meta[filename]["vault_path"])
+    with open(vault_path, 'rb') as f:
+        salt = f.read(16)
+        encrypted = f.read()
