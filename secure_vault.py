@@ -97,3 +97,7 @@ def decrypt_file(filename: str, password: str, output_path: str):
         raise ValueError("Wrong password or corrupted file!")
     with open(output_path, 'wb') as f:
         f.write(data)
+# ===== GUI (Simple & Explainable) =====
+class SecureVault:
+    def __init__(self, root):
+        self.root = root
