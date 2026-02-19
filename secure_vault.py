@@ -91,3 +91,6 @@ def decrypt_file(filename: str, password: str, output_path: str):
     with open(vault_path, 'rb') as f:
         salt = f.read(16)
         encrypted = f.read()
+    try:
+        data = Fernet(derive_key(password, salt)).decrypt(encrypted)
+    
