@@ -93,4 +93,5 @@ def decrypt_file(filename: str, password: str, output_path: str):
         encrypted = f.read()
     try:
         data = Fernet(derive_key(password, salt)).decrypt(encrypted)
-    
+    except InvalidToken:
+        raise ValueError("Wrong password or corrupted file!")
