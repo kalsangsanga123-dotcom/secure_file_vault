@@ -101,3 +101,6 @@ def decrypt_file(filename: str, password: str, output_path: str):
 class SecureVault:
     def __init__(self, root):
         self.root = root
+        self.root.title("🔒 Secure Vault")
+        self.root.geometry("450x400")
+        self.password = None  # Cleared when locked
