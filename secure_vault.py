@@ -104,3 +104,7 @@ class SecureVault:
         self.root.title("🔒 Secure Vault")
         self.root.geometry("450x400")
         self.password = None  # Cleared when locked
+
+         # Status label (shows lock state)
+        self.status = Label(root, text="🔒 LOCKED", fg="red", font=("Arial", 12, "bold"))
+        self.status.pack(pady=10)
