@@ -108,3 +108,10 @@ class SecureVault:
          # Status label (shows lock state)
         self.status = Label(root, text="🔒 LOCKED", fg="red", font=("Arial", 12, "bold"))
         self.status.pack(pady=10)
+         # Control buttons
+        frame = Frame(root)
+        frame.pack(pady=10)
+        Button(frame, text="🔓 Unlock", command=self.unlock, width=12).grid(row=0, column=0, padx=5)
+        Button(frame, text="🔒 Lock", command=self.lock, width=12).grid(row=0, column=1, padx=5)
+        Button(frame, text="➕ Add File", command=self.add_file, width=12).grid(row=1, column=0, padx=5, pady=5)
+        Button(frame, text="⬇️ Retrieve", command=self.retrieve, width=12).grid(row=1, column=1, padx=5, pady=5)
