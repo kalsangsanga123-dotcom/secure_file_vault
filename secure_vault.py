@@ -115,3 +115,9 @@ class SecureVault:
         Button(frame, text="🔒 Lock", command=self.lock, width=12).grid(row=0, column=1, padx=5)
         Button(frame, text="➕ Add File", command=self.add_file, width=12).grid(row=1, column=0, padx=5, pady=5)
         Button(frame, text="⬇️ Retrieve", command=self.retrieve, width=12).grid(row=1, column=1, padx=5, pady=5)
+
+        # File list
+        Label(root, text="Stored Files:").pack()
+        self.listbox = Listbox(root, width=50, height=12)
+        self.listbox.pack(pady=10)
+        self.refresh_list()
