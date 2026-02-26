@@ -83,4 +83,17 @@ class SecureVault:
             except Exception as e:
                 messagebox.showerror("Error", f"Failed: {str(e)}")
 
-    
+    def retrieve(self):
+        sel = self.listbox.curselection()
+        if not sel or "No files" in self.listbox.get(sel[0]):
+            messagebox.showwarning("Warning", "Select a valid file")
+            return
+        
+        filename = self.listbox.get(sel[0]).split(" (")[0]
+        save_path = filedialog.asksaveasfilename(initialfile=filename)
+        if save_path:
+            try:
+                vault_logic.decrypt_file(filename, self.password, save_path)
+                messagebox.showinfo("Success", "File retrieved!")
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed: {str(e)}")
