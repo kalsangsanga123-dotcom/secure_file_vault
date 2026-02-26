@@ -15,5 +15,17 @@ class TestVaultLogic(unittest.TestCase):
         with open(self.test_filename, 'wb') as f:
             f.write(self.test_content)
 
+    def tearDown(self):
+        """Clean up files and the vault directory after tests."""
+        files_to_remove = [self.test_filename, self.output_filename]
+        for f in files_to_remove:
+            if os.path.exists(f):
+                os.remove(f)
+        
+        # Remove the secure vault directory created during tests
+        if os.path.exists(vault_logic.VAULT_DIR):
+            shutil.rmtree(vault_logic.VAULT_DIR)
+
+ 
 if __name__ == "__main__":
     unittest.main()
