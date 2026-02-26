@@ -45,4 +45,14 @@ class SecureVault:
                     else:
                         b.config(state=state)
 
+    def unlock(self):
+        pwd = simpledialog.askstring("Unlock", "Enter password:", show="*")
+        if pwd and vault_logic.verify_password(pwd):
+            self.password = pwd
+            self.update_status()
+            self.refresh_list()
+            messagebox.showinfo("Success", "Vault unlocked!")
+        else:
+            messagebox.showerror("Error", "Wrong password!")
+
     
