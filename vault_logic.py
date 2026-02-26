@@ -26,3 +26,11 @@ def verify_password(password: str) -> bool:
         with open(VERIFY_FILE, 'wb') as f:
             f.write(salt + token)
         return True
+    with open(VERIFY_FILE, 'rb') as f:
+        salt = f.read(16)
+        token = f.read()
+    try:
+        Fernet(derive_key(password, salt)).decrypt(token)
+        return True
+    except InvalidToken:
+        return False
