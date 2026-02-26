@@ -17,3 +17,12 @@ def derive_key(password: str, salt: bytes) -> bytes:
         salt=salt,
         iterations=100000
     )
+    return base64.urlsafe_b64encode(kdf.derive(password.encode()))
+
+def verify_password(password: str) -> bool:
+    if not os.path.exists(VERIFY_FILE):
+        salt = os.urandom(16)
+        token = Fernet(derive_key(password, salt)).encrypt(b"OK")
+        with open(VERIFY_FILE, 'wb') as f:
+            f.write(salt + token)
+        return True
