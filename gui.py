@@ -73,4 +73,14 @@ class SecureVault:
         except Exception as e:
             self.listbox.insert(END, f"Error: {str(e)}")
 
+    def add_file(self):
+        path = filedialog.askopenfilename()
+        if path:
+            try:
+                vault_logic.encrypt_file(path, self.password)
+                self.refresh_list()
+                messagebox.showinfo("Success", "File secured!")
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed: {str(e)}")
+
     
