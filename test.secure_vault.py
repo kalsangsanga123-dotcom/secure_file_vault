@@ -26,6 +26,23 @@ class TestVaultLogic(unittest.TestCase):
         if os.path.exists(vault_logic.VAULT_DIR):
             shutil.rmtree(vault_logic.VAULT_DIR)
 
- 
+    def test_full_encryption_cycle(self):
+        """Test: Original -> Encrypt -> Decrypt -> Matches Original."""
+        # 1. Initialize password (creates .verify)
+        self.assertTrue(vault_logic.verify_password(self.test_password))
+        
+        # 2. Encrypt the file
+        vault_logic.encrypt_file(self.test_filename, self.test_password)
+        
+        # 3. Decrypt the file to a new location
+        vault_logic.decrypt_file(self.test_filename, self.test_password, self.output_filename)
+        
+        # 4. Verify the content matches
+        with open(self.output_filename, 'rb') as f:
+            decrypted_content = f.read()
+            
+        self.assertEqual(self.test_content, decrypted_content)
+
+
 if __name__ == "__main__":
     unittest.main()
