@@ -74,3 +74,20 @@ def encrypt_file(filepath: str, password: str):
     meta[filename] = {"vault_path": os.path.basename(vault_path), "size": len(data)}
     save_metadata(meta, password)
 
+def decrypt_file(filename: str, password: str, output_path: str):
+    meta = load_metadata(password)
+    if filename not in meta:
+        raise FileNotFoundError("File not in vault")
+    
+    vault_path = os.path.join(VAULT_DIR, meta[filename]["vault_path"])
+    with open(vault_path, 'rb') as f:
+        salt = f.read(16)
+        encrypted = f.read()
+    
+    try:
+        data = Fernet(derive_key(password, salt)).decrypt(encrypted)
+    except InvalidToken:
+        raise ValueError("Wrong password or corrupted file!")
+    
+    with open(output_path, 'wb') as f:
+        f.write(data)
