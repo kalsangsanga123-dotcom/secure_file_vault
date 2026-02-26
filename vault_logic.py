@@ -53,3 +53,24 @@ def load_metadata(password: str) -> dict:
     except InvalidToken:
         raise ValueError("Wrong password!")
 
+def encrypt_file(filepath: str, password: str):
+    with open(filepath, 'rb') as f:
+        data = f.read()
+    
+    salt = os.urandom(16)
+    encrypted = Fernet(derive_key(password, salt)).encrypt(data)
+    
+    filename = os.path.basename(filepath)
+    vault_path = os.path.join(VAULT_DIR, f"{filename}.enc")
+    counter = 1
+    while os.path.exists(vault_path):
+        vault_path = os.path.join(VAULT_DIR, f"{filename}.{counter}.enc")
+        counter += 1
+    
+    with open(vault_path, 'wb') as f:
+        f.write(salt + encrypted)
+    
+    meta = load_metadata(password)
+    meta[filename] = {"vault_path": os.path.basename(vault_path), "size": len(data)}
+    save_metadata(meta, password)
+
