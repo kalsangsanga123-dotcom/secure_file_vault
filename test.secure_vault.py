@@ -43,6 +43,16 @@ class TestVaultLogic(unittest.TestCase):
             
         self.assertEqual(self.test_content, decrypted_content)
 
+    def test_wrong_password(self):
+        """Test: Attempting to decrypt with the wrong password should fail."""
+        vault_logic.verify_password(self.test_password)
+        vault_logic.encrypt_file(self.test_filename, self.test_password)
+        
+        # Try to load metadata or decrypt with a bad password
+        with self.assertRaises(ValueError):
+            vault_logic.load_metadata("wrong_password")
+
+
 
 if __name__ == "__main__":
     unittest.main()
