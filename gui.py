@@ -25,4 +25,24 @@ class SecureVault:
         self.listbox.pack(pady=10)
         self.update_status()
 
+    def update_status(self):
+        if self.password:
+            self.status.config(text="🔓 UNLOCKED", fg="green")
+            state = NORMAL
+            unlock_state = DISABLED
+        else:
+            self.status.config(text="🔒 LOCKED", fg="red")
+            self.listbox.delete(0, END)
+            self.listbox.insert(END, "Unlock vault to view files")
+            state = DISABLED
+            unlock_state = NORMAL
+
+        for btn_frame in self.root.winfo_children():
+            if isinstance(btn_frame, Frame):
+                for b in btn_frame.winfo_children():
+                    if b.cget("text") == "🔓 Unlock":
+                        b.config(state=unlock_state)
+                    else:
+                        b.config(state=state)
+
     
