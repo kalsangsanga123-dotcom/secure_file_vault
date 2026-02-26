@@ -55,4 +55,9 @@ class SecureVault:
         else:
             messagebox.showerror("Error", "Wrong password!")
 
+    def lock(self):
+        self.password = None
+        self.update_status()
+        messagebox.showinfo("Locked", "Password cleared from memory")
+
     
