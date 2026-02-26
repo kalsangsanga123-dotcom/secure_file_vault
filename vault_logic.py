@@ -35,7 +35,16 @@ def verify_password(password: str) -> bool:
     except InvalidToken:
         return False
     def save_metadata(metadata: dict, password: str):
-    salt = os.urandom(16)
-    data = Fernet(derive_key(password, salt)).encrypt(json.dumps(metadata).encode())
+        salt = os.urandom(16)
+        data = Fernet(derive_key(password, salt)).encrypt(json.dumps(metadata).encode())
     with open(METADATA_FILE, 'wb') as f:
         f.write(salt + data)
+
+        def load_metadata(password: str) -> dict:
+    if not os.path.exists(METADATA_FILE):
+        return {}
+    with open(METADATA_FILE, 'rb') as f:
+        salt = f.read(16)
+        data = f.read()
+
+
