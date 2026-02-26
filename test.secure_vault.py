@@ -52,7 +52,14 @@ class TestVaultLogic(unittest.TestCase):
         with self.assertRaises(ValueError):
             vault_logic.load_metadata("wrong_password")
 
-
+    def test_metadata_persistence(self):
+        """Test: Ensure file size and names are stored correctly in metadata."""
+        vault_logic.verify_password(self.test_password)
+        vault_logic.encrypt_file(self.test_filename, self.test_password)
+        
+        meta = vault_logic.load_metadata(self.test_password)
+        self.assertIn(self.test_filename, meta)
+        self.assertEqual(meta[self.test_filename]['size'], len(self.test_content))
 
 if __name__ == "__main__":
     unittest.main()
