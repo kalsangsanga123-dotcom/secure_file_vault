@@ -60,4 +60,17 @@ class SecureVault:
         self.update_status()
         messagebox.showinfo("Locked", "Password cleared from memory")
 
+    def refresh_list(self):
+        if not self.password: return
+        self.listbox.delete(0, END)
+        try:
+            meta = vault_logic.load_metadata(self.password)
+            if not meta:
+                self.listbox.insert(END, "No files stored")
+                return
+            for name, info in meta.items():
+                self.listbox.insert(END, f"{name} ({info['size']} bytes)")
+        except Exception as e:
+            self.listbox.insert(END, f"Error: {str(e)}")
+
     
