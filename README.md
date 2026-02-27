@@ -66,6 +66,12 @@ python3 main.py
 
 ![image](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/abe97761d51fa1aa680c666c1727edc9057d1de6/Screenshot%202026-02-27%20214706.png)
 
+**Error for wrong password**
+
+![image](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/0ff85222e7031ec7a24d1e476f3d98aa4ade877a/Screenshot%202026-02-27%20214945.png)
+
+
+
 ## Application testing
 ```bash
 python3 test.secure_vault.py
