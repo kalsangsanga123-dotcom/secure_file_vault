@@ -51,6 +51,7 @@ python3 main.py
 
 **Expected Output**
 
+![image alt](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/d8d0303575812c3bc467b6feeeb092bbf4d982e3/Screenshot%202026-02-27%20161502.png)
 
 
 ## Application testing
