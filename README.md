@@ -16,19 +16,20 @@ A lightweight, Tkinter-based Python application designed to encrypt and manage s
 - Secure Retrieval.
 - Automated Cleanup.
 
-## Project Structure
+### Project Structure
+```text
 secure-vault-project/
-├── .secure_vault/          # (HIDDEN) Local storage for encrypted files
-│   ├── .verify             # Password verification token
-│   ├── vault.dat           # Encrypted metadata manifest
-│   └── example.txt.enc     # Encrypted file blobs
-├── .gitignore              # Instructions for Git to ignore sensitive data
-├── gui.py                  # Tkinter interface and UI logic
-├── main.py                 # Application entry point
-├── README.md               # Project documentation
-├── requirements.txt        # List of Python dependencies
-├── test.py                 # Automated unit tests
-└── vault_logic.py          # Core cryptographic engine
+├── .secure_vault/           # (HIDDEN) Local storage for encrypted files
+│   ├── .verify              # Password verification token
+│   ├── vault.dat            # Encrypted metadata manifest
+│   └── example.txt.enc      # Encrypted file blobs
+├── .gitignore               # Instructions for Git to ignore sensitive data
+├── gui.py                   # Tkinter interface and UI logic
+├── main.py                  # Application entry point
+├── README.md                # Project documentation
+├── requirements.txt         # List of Python dependencies
+├── test.py                  # Automated unit tests
+└── vault_logic.py           # Core cryptographic engine
 
 # Installation
 
