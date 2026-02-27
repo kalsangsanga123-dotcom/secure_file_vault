@@ -62,6 +62,10 @@ python3 main.py
 
 ![image](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/e2caa6e916f4c1bb57fda9041331aecfe050493e/Screenshot%202026-02-27%20162442.png)
 
+**Retrival dialog**
+
+![image](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/abe97761d51fa1aa680c666c1727edc9057d1de6/Screenshot%202026-02-27%20214706.png)
+
 ## Application testing
 ```bash
 python3 test.secure_vault.py
