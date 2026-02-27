@@ -31,7 +31,8 @@ secure-vault-project/
 ├── test.py                  # Automated unit tests
 └── vault_logic.py           # Core cryptographic engine
 
-# Installation
+
+### Installation
 
 ## Prerequisites
 - Python 3.8+
