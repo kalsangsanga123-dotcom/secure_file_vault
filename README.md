@@ -53,6 +53,8 @@ python3 main.py
 
 ![image alt](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/d8d0303575812c3bc467b6feeeb092bbf4d982e3/Screenshot%202026-02-27%20161502.png)
 
+Popup for entering password
+![image alt](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/2aaa9d83c7871a0817004e5c375301fc6809013e/Screenshot%202026-02-27%20162013.png)
 
 ## Application testing
 ```bash
