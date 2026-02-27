@@ -30,7 +30,7 @@ secure-vault-project/
 ├── requirements.txt         # List of Python dependencies
 ├── test.py                  # Automated unit tests
 └── vault_logic.py           # Core cryptographic engine
-'''
+```
 
 ### Installation
 
