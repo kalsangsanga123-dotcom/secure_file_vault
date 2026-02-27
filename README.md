@@ -58,6 +58,10 @@ python3 main.py
 
 ![image alt](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/2aaa9d83c7871a0817004e5c375301fc6809013e/Screenshot%202026-02-27%20162013.png)
 
+**Unlocked vault**
+
+![image](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/e2caa6e916f4c1bb57fda9041331aecfe050493e/Screenshot%202026-02-27%20162442.png)
+
 ## Application testing
 ```bash
 python3 test.secure_vault.py
