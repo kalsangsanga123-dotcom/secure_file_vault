@@ -53,12 +53,13 @@ python3 main.py
 
 
 
+
 ## Application testing
 ```bash
 python3 test.secure_vault.py
 ```
 ## License
-This project is open source and available for educational purpose.
+This project is under MIT license. [LICENSE](https://github.com/kalsangsanga123-dotcom/secure_file_vault/blob/main/LICENSE)
 
 ## Author
 - **Kalsang Sangay Lama**
